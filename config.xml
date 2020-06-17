@@ -1,6 +1,6 @@
 <?xml version="0.1" encoding="UTF-8"?>
 <widget xmlns   = "http://www.w3.org/ns/widgets"
-		id          = "mx.com.derianjair.lalista"
+		id          = "com.derianjair.lalista"
 		version     = "0.1" >
 
 	<name>La Lista</name>
