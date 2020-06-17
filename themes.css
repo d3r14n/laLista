@@ -1,0 +1,15 @@
+:root
+{
+    /*GRAY THEME*/
+    --gray_main: #444444;
+    --gray_bg: #c0c0c0;
+    --gray_modal: #f3f3f3;
+    --gray_menu: #969696;
+    --gray_btn: #bebebe;
+}
+
+.gray_main  {background: var(--gray_main);}
+.gray_bg    {background: var(--gray_bg);}
+.gray_modal {background: var(--gray_modal);}
+.gray_menu  {background: var(--gray_menu);}
+.gray_btn   {background: var(--gray_btn);}

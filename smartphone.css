@@ -1,0 +1,300 @@
+*
+{
+	padding: 0;
+	margin: 0;
+}
+
+html, body
+{
+	width: 100%;
+	height: 100%;
+}
+
+p
+{
+	position: relative;
+	font-size: 1.3em;
+	font-family: 'Roboto', sans-serif;
+}
+
+button
+{
+	position: relative;
+	font-size: 1.4em;
+	outline: none;
+}
+
+.hidden
+{
+	display: none;
+}
+
+#sombra
+{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 2;
+}
+
+#principal
+{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+}
+
+.mainDiv
+{
+	width: 100vw;
+	height: 10vh;
+}
+
+#divHeader
+{
+	position: absolute;
+	top: 0;
+}
+
+#divHeader>p
+{
+	position: relative;
+	width: 70vw;
+	height: 10vh;
+	text-align: center;
+	padding-top: 2.5vh;
+	float: left;
+	box-sizing: border-box;
+}
+
+#divHeader>button
+{
+	width: 15vw;
+	height: 100%;
+	background: transparent;
+	border: none;
+	font-size: 2em;
+	margin-top: 2vh;
+}
+
+#menuHamburguesa
+{
+	position: relative;
+	left: 0;
+	float: left;
+}
+
+#btnAnadir
+{
+	position: relative;
+	right: 0;
+	float: right;
+}
+
+#divBotones
+{
+	position: absolute;
+	bottom: 0;
+}
+
+#divBotones>button
+{
+	height: 8vh;
+	margin-top: 1vh;
+}
+
+#btnAzar
+{
+	position: relative;
+	width: 80vw;
+	left: 5vw;
+	float: left;
+}
+
+#btnConfig
+{
+	position: relative;
+	width: 15vw;
+	right: 0;
+	float: right;
+	background: transparent;
+	border: none;
+}
+
+#divLista
+{
+	position: relative;
+	width: 87vw;
+	height: 70vh;
+	top: 18vh;
+	bottom: 15vh;
+	left: 8vw;
+	right: 5vw;
+	overflow-y: scroll;
+}
+
+#divOrden
+{
+	position: absolute;
+	width: 100%;
+	height: 5vh;
+	top: 10vh;
+}
+
+#divOrden>button
+{
+	margin-bottom: 10%;
+	position: relative;
+	font-size: 1.5em;
+	font-family: 'Noto Sans', sans-serif;
+	background: transparent;
+	border: none;
+	margin-top: 1vh;
+}
+
+#ordenAlf
+{
+	float: left;
+	left: 20vw;
+}
+
+#ordenRec
+{
+	float: right;
+	right: 20vw;
+}
+
+#lista
+{
+	font-size: 2.3em;
+}
+
+.elementoLista
+{
+	font-size: 1em;
+	border-bottom: 1px dotted black;
+	padding-left: 10%;
+	box-sizing: border-box;
+}
+
+#menu
+{
+	position: absolute;
+	left: -50vw;
+	width: 50vw;
+	height: 100vh;
+	z-index: 3;
+	transition: left 0.5s;
+}
+
+#tituloMenu
+{
+	position: relative;
+	top: 0;
+	width: 100%;
+	height: 10vh;
+	font-size: 2em;
+	text-align: center;
+	padding-top: 2vh;
+	box-sizing: border-box;
+}
+
+.categoria
+{
+	position: relative;
+	width: 100%;
+	height: 6vh;
+	font-size: 1.2em;
+	text-align: center;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+
+
+#categoria_c
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid black;
+}
+
+.modal
+{
+	position: absolute;
+	width: 80vw;
+	height: 60vh;
+	left: 10vw;
+	top: 20vh;
+	z-index: 3;
+}
+
+.modalHeader
+{
+	width: 100%;
+	height: 5vh;
+}
+
+.modalHeader>p
+{
+	font-size: 1.2em;
+	text-align: center;
+	padding-top: 1vh;
+	box-sizing: border-box;
+}
+
+.modalHeader>button
+{
+	font-size: 1em;
+	right: 2vw;
+	top: 1vh;
+	float: right;
+	background: transparent;
+	border: none;
+	color: red;
+	z-index: 4;
+}
+
+.modalBody
+{
+	width: 100%;
+	height: 55vh;
+	text-align: center;
+	overflow-y: scroll;
+}
+
+.modalBody>p
+{
+	margin-top: 1vh;
+	margin-bottom: 2vh;
+}
+
+.modalBody>input
+{
+	width: 60%;
+	font-size: 1.3em;
+	border: 1px solid black;
+}
+
+.modalBody>input[type=color]
+{
+	position: relative;
+	width: 60vw;
+	height: 20vh;
+}
+
+.modalBody>textarea
+{
+	width: 80%;
+	font-size: 1.1em;
+	min-height: 10vh;
+	resize: vertical;
+}
+
+.modalBody>button
+{
+	margin-top: 2vh;
+	margin-bottom: 5vh;
+}

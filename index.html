@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LA LISTA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" type="text/css" media="screen and (min-width: 800px)" href="desktop.css"> -->
+	<link rel="stylesheet" type="text/css" media="screen and (max-width: 800px)" href="smartphone.css">
+	<link rel="stylesheet" href="themes.css">
+</head>
+<body>
+	<div class="modal hidden" id="opciones">
+		<div class="modalHeader gray_main">
+			<button id="btnCerrarOpciones">x</button>
+			<p>Opciones</p>
+		</div>
+		<div class="modalBody gray_modal">
+		</div>
+	</div>
+
+	<div class="modal hidden" id="elemento">
+		<div id="headerElemento" class="modalHeader gray_main">
+			<button id="btnCerrarElemento">x</button>
+			<p id="tituloElemento">Titulo</p>
+		</div>
+		<div class="modalBody gray_modal">
+			<p>Descripción: </p>
+			<textarea disabled id="descripcionElemento">...</textarea>
+			<button id="btnCompletarElemento">¡Marcar Como Completado!</button>
+		</div>
+	</div>
+
+	<div class="modal hidden" id="nuevaCategoria">
+		<div id="headerNuevaCategoria" class="modalHeader gray_main">
+			<button id="btnCerrarNuevaCategoria">x</button>
+			<p>Nueva Categoría</p>
+		</div>
+		<div class="modalBody gray_modal">
+			<p>Categoria: </p>
+			<input type="text" id="nombreCategoria">
+			<p>Color: </p>
+			<input type="color" id="colorCategoria">
+			<button id="btnAgregarNuevaCategoria">Agregar</button>
+		</div>
+	</div>
+
+	<div class="modal hidden" id="nuevoElemento">
+		<div id="headerNuevoElemento" class="modalHeader gray_main">
+			<button id="btnCerrarNuevoElemento">x</button>
+			<p>Nuevo Elemento</p>
+		</div>
+		<div class="modalBody gray_modal">
+			<p>Nombre: </p>
+			<input type="text" id="nombreNuevoElemento">
+			<p>Categoria: </p>
+			<input disabled type="text" id="categoriaNuevoElemento">
+			<p>Descripción: </p>
+			<textarea id="descripcionNuevoElemento"></textarea>
+			<button id="btnAgregarNuevoElemento">Agregar</button>
+		</div>
+	</div>
+
+	<div id="menu" class="gray_menu">
+		<div id="tituloMenu" class="gray_main">Menú</div>
+		<button id="categoria_p" class="categoria gray_btn">Principal</button>
+		<div id="categoriasMenu"></div>
+		<button id="categoria_n" class="categoria gray_btn">+ Nueva Categoría</button>
+		<button id="categoria_c" class="categoria gray_btn">⚙️Opciones</button>
+	</div>
+
+	<div id="sombra" class="hidden"></div>
+
+	<div id="principal" class="mainDiv gray_bg">
+		<div id="divHeader" class="gray_main">
+			<button id="menuHamburguesa">=</button>
+			<p id="txtCategoria">La Lista</p>
+			<button id="btnAnadir">+</button>
+		</div>
+
+		<div id="divOrden">
+			<button id="ordenAlf">A-Z ↑</button>
+			<button id="ordenRec">Agregado ↓</button>
+		</div>
+
+		<div id="divLista">
+			<div id="lista">
+			</div>
+		</div>
+
+		<div id="divBotones" class="mainDiv gray_main">
+			<button id="btnAzar" class="gray_btn">Elegir al Azar</button>
+			<button id="btnConfig">⚙️</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="main.js"></script>
+</html>
