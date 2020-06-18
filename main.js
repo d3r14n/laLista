@@ -57,7 +57,7 @@ document.getElementById('menuHamburguesa').addEventListener("click", showMenu); 
 
 document.getElementById('sombra').addEventListener("click", closeAll); //Cierra todos los modales al tocar fuera de este
 
-function currentElements(category)
+function currentElements(category, sort=null)
 {
 	reloadGlobals();
 	var ce = Array(2);
@@ -73,7 +73,66 @@ function currentElements(category)
 			x++;
 		}
 	}
-	console.log(ce);
+
+	if(sort != null)
+	{
+		switch (sort)
+		{
+			case "AZ":
+				sorted = false;
+				while (!sorted)
+				{
+					sorted = true;
+					for (x = 0; x < ce[0].length - 1; x++)
+					{
+						if (ce[0][x].toLowerCase() > ce[0][x + 1].toLowerCase())
+						{
+							sorted = false;
+
+							tempE = ce[0][x];
+							ce[0][x] = ce[0][x + 1];
+							ce[0][x + 1] = tempE;
+
+							tempE = ce[1][x];
+							ce[1][x] = ce[1][x + 1];
+							ce[1][x + 1] = tempE;
+						}
+					}
+				}
+				if (AZUp)
+				{
+					document.getElementById('ordenAlf').innerHTML = "A-Z ↓";
+				}
+				else
+				{
+					document.getElementById('ordenAlf').innerHTML = "A-Z ↑";
+					ce[0].reverse();
+					ce[1].reverse();
+				}
+				AZUp = !AZUp;
+				break;
+
+			case "REC":
+				if (RECUp)
+				{
+					document.getElementById('ordenRec').innerHTML = "Agregado ↓";
+				}
+				else
+				{
+					document.getElementById('ordenRec').innerHTML = "Agregado ↑";
+					ce[0].reverse();
+					ce[1].reverse();
+				}
+				RECUp = !RECUp;
+				break;
+
+			default:
+				document.getElementById('ordenRec').innerHTML = "Agregado ↓";
+				RECUp = true;
+				break;
+		}
+	}
+
 	return ce;
 }
 
@@ -85,11 +144,11 @@ function reloadGlobals()
 	info = localStorage.getItem("ll_info").split(";");
 }
 
-function showList()
+function showList(sort=null)
 {
 	if (categoriaActual != null)
 	{
-		elementosActuales = currentElements(categoriaActual);
+		elementosActuales = currentElements(categoriaActual, sort);
 		if (elementosActuales[0].length > 0)
 		{
 			document.getElementById('lista').innerHTML = "";
@@ -124,7 +183,6 @@ function showCategories()
 
 function selectThis(selectedElementID)
 {
-	console.log(selectedElementID);
 	displayInfo(selectedElementID);
 }
 
@@ -144,6 +202,7 @@ function displayInfo(idElemento)
 
 	document.getElementById('tituloElemento').innerHTML = elemento[idElemento];
 	document.getElementById('descripcionElemento').innerHTML = info[idElemento];
+	document.getElementById('idElemento').value = idElemento;
 }
 
 function displayNewCategory()
@@ -167,78 +226,25 @@ function displayOptions()
 
 function orderAZ()
 {
-	underConstruction();
-	/*
-	elements = currentElements()
-	sorted = false;
-	while (!sorted)
-	{
-		sorted = true;
-		for (x = 0; x < elements.length - 1; x++)
-		{
-			if (elements[x].toLowerCase() > elements[x + 1].toLowerCase())
-			{
-				sorted = false;
-
-				tempP = elements[x];
-				elements[x] = elements[x + 1];
-				elements[x + 1] = tempP;
-
-				tempI = info[x];
-				info[x] = info[x + 1];
-				info[x + 1] = tempI;
-			}
-		}
-	}
-	if (AZUp)
-	{
-		document.getElementById('ordenAlf').innerHTML = "A-Z ↓";
-	}
-	else
-	{
-		document.getElementById('ordenAlf').innerHTML = "A-Z ↑";
-		elements.reverse();
-		info.reverse();
-	}
-	showList();
-	AZUp = !AZUp;
-	*/
+	showList("AZ");
 }
 
 function orderREC()
 {
-	underConstruction();
-	/*
-	elements = currentElements()
-	if (RECUp)
-	{
-		document.getElementById('ordenRec').innerHTML = "Agregado ↓";
-	}
-	else
-	{
-		document.getElementById('ordenRec').innerHTML = "Agregado ↑";
-		elements.reverse();
-		info.reverse();
-	}
-	showList();
-	RECUp = !RECUp;
-	*/
+	showList("REC");
 }
 
 function selectRandom()
 {
-	underConstruction();
-	/*
-	if (elementosActuales[0].length > 1)
+	if (elementosActuales[0].length > 0)
 	{
-		n = randomNumber(elementosActuales[0].length - 1, 1);
-		document.getElementById('elemento').innerHTML = pelicula[n];
+		n = randomNumber(elementosActuales[0].length - 1, 0);
+		selectThis(elementosActuales[1][n]);
 	}
 	else
 	{
-		alert("No se han añadido elementos");
+		alert("No se han añadido elementos a esta categoría");
 	}
-	*/
 }
 
 function randomNumber(max, min = 0)
@@ -306,7 +312,7 @@ function addElement()
 
 				alert("Elemento añadido");
 				document.getElementById('nombreNuevoElemento').value = "";
-				document.getElementById('categoriaNuevoElemento').value = "";
+				document.getElementById('categoriaNuevoElemento').value = categoriaActual;
 				document.getElementById('descripcionNuevoElemento').value = "";
 				document.getElementById('ordenRec').innerHTML = "Agregado ↓";
 				RECUp = false;
@@ -328,7 +334,41 @@ function addElement()
 
 function removeElement()
 {
-	underConstruction();
+	reloadGlobals();
+	idElmnt = document.getElementById('idElemento').value;
+	if (idElmnt != "" && idElmnt > 0)
+	{
+		if (confirm("¿Desea eliminar \"" + elemento[idElmnt] + "\" de la lista \"" + categoriaActual + "\"?"))
+		{
+			if (confirm("¿Está seguro?"))
+			{
+				elementoString = null;
+				infoString = null;
+				categoriaElementoString = null;
+
+				elemento.splice(idElmnt, 1);
+				info.splice(idElmnt, 1);
+				categoriaElemento.splice(idElmnt, 1)
+
+				for (i = 1; i < elemento.length; i++)
+				{
+					elementoString += ";" + elemento[i];
+					infoString += ";" + info[i];
+					categoriaElementoString += ";" + categoriaElemento[i];
+				}
+
+				localStorage.setItem("ll_elementos", elementoString);
+				localStorage.setItem("ll_categoriaElemento", categoriaElementoString);
+				localStorage.setItem("ll_info", infoString);
+
+				showList();
+			}
+		}
+	}
+	else
+	{
+		alert("No hay ningun elemento seleccionado");
+	}
 }
 
 function showMenu()
